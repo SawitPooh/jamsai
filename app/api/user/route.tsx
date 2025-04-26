@@ -26,8 +26,12 @@ export async function POST(req: Request) {
     );
     console.log('✅ Successfully saved to database', response.data);
     return NextResponse.json({ message: 'User info saved successfully' });
-  } catch (error: any) {
-    console.error('❌ POST /api/user error:', error.response?.data || error.message);
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error('❌ POST /api/user error:', error.response?.data || error.message);
+    } else {
+      console.error('❌ POST /api/user error:', error);
+    }
     return NextResponse.json({ error: 'Failed to save user info' }, { status: 500 });
   }
 }

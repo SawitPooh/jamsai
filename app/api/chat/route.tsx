@@ -5,6 +5,10 @@ export async function POST(req: NextRequest) {
   try {
     const { message } = await req.json();
 
+    if (!message || typeof message !== 'string') {
+      return NextResponse.json({ error: 'Invalid message' }, { status: 400 });
+    }
+
     const client = new AzureOpenAI({
       endpoint: process.env.AZURE_OPENAI_ENDPOINT!,
       apiKey: process.env.AZURE_OPENAI_API_KEY!,
@@ -33,7 +37,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ reply });
   } catch (error) {
-    console.error('POST /api/chat error:', error);
+    console.error('❌ POST /api/chat error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
