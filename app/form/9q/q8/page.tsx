@@ -25,7 +25,7 @@ export default function Q8Page() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-orange-50 p-6">
-      <h1 className="text-xl font-bold text-center mb-4">Q8/9</h1>
+      <h1 className="text-xl font-bold text-center mb-4">Q: 8/9</h1>
       <p className="text-center mb-6">
         ใน 2 สัปดาห์ที่ผ่านมา รวมถึงวันนี้
         ท่านมีอาการ พูดช้า ทำอะไรช้าลงจนคนอื่นสังเกตเห็น

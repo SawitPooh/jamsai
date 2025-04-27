@@ -44,7 +44,7 @@ export default function Q9SummaryPage() {
     if (totalScore < 7) {
       router.push('/form/end_jamsai/select_doctor_chat');
     } else {
-      router.push('/form/end_jamsai/select8q');
+      router.push('/form/8q');
     }
   };
 

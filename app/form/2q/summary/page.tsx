@@ -29,7 +29,7 @@ export default function Q2SummaryPage() {
     if (totalScore === 0) {
       router.push('/form/end_jamsai/select_doctor_chat');
     } else {
-      router.push('/form/end_jamsai/select9q');
+      router.push('/form/9q');
     }
   };
 

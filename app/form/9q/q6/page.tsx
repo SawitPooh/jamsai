@@ -23,7 +23,7 @@ export default function Q6Page() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-orange-50 p-6">
-      <h1 className="text-xl font-bold text-center mb-4">Q6/9</h1>
+      <h1 className="text-xl font-bold text-center mb-4">Q: 6/9</h1>
       <p className="text-center mb-6">
         ใน 2 สัปดาห์ที่ผ่านมา รวมถึงวันนี้<br/>
         ท่านรู้สึกไม่ได้กับตัวเอง คิดว่าตัวเองล้มเหลว หรือครอบครัวผิดหวัง บ่อยแค่ไหน
