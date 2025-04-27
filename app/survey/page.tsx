@@ -69,7 +69,7 @@ export default function SurveyIntro() {
       </div>
 
       {/* Buttons */}
-      <div className="w-full max-w-xs sm:max-w-md mt-8 space-y-3">
+      <div className="w-full pb-20 max-w-xs  sm:max-w-md mt-8 space-y-3 ">
         <button
           onClick={nextSlide}
           className="w-full py-3 bg-indigo-500 text-white font-bold rounded-full shadow-lg hover:bg-indigo-600 transition"
