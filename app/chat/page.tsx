@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+
 
 interface Message {
   sender: 'user' | 'bot';
