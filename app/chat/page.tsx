@@ -9,22 +9,14 @@ interface Message {
 }
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([{
-    sender: 'bot',
-    text: 'สวัสดีค่ะ หนูชื่อน้องแจ่มใส พี่ ๆ มีอะไรอยากพูดคุย หรือขอคำปรึกษาได้เลยค่ะ ',
-  }]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      sender: 'bot',
+      text: 'สวัสดีค่ะ หนูชื่อน้องแจ่มใส พี่ ๆ มีอะไรอยากพูดคุย หรือขอคำปรึกษาได้เลยค่ะ',
+    },
+  ]);
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [userId, setUserId] = useState<string>('');
-
-  useEffect(() => {
-    let id = localStorage.getItem('userId');
-    if (!id) {
-      id = uuidv4();
-      localStorage.setItem('userId', id);
-    }
-    setUserId(id);
-  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -35,44 +27,29 @@ export default function ChatPage() {
 
     const userMessage: Message = { sender: 'user', text: input };
     setMessages((prev) => [...prev, userMessage]);
-
-    // Save user message to DB
-    await fetch('/api/chat/save-history', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, message: input, role: 'user' }),
-    });
-
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, message: input }),
-    });
-    const data = await response.json();
-
-    const botMessage: Message = { sender: 'bot', text: data.reply };
-    setMessages((prev) => [...prev, botMessage]);
-
-    // Save bot message to DB
-    await fetch('/api/chat/save-history', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, message: data.reply, role: 'assistant' }),
-    });
-
     setInput('');
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: input }),
+      });
+      const data = await response.json();
+
+      const botMessage: Message = { sender: 'bot', text: data.reply };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error('ส่งข้อความผิดพลาด:', error);
+      const errorMessage: Message = { sender: 'bot', text: 'ขอโทษค่ะ เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งนะคะ' };
+      setMessages((prev) => [...prev, errorMessage]);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       sendMessage();
     }
-  };
-
-  const handleLeaveChat = async () => {
-    await fetch(`/api/chat/delete-history?userId=${userId}`, { method: 'DELETE' });
-    localStorage.removeItem('userId');
-    // Redirect if needed (example): router.push('/')
   };
 
   return (
@@ -105,15 +82,6 @@ export default function ChatPage() {
           className="bg-pink-500 hover:bg-pink-600 active:bg-pink-700 text-white p-3 rounded-full"
         >
           ➤
-        </button>
-      </div>
-
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={handleLeaveChat}
-          className="text-xs text-gray-500 underline"
-        >
-          ออกจากการสนทนา
         </button>
       </div>
     </main>
