@@ -46,15 +46,14 @@ export default function SurveyIntro() {
   const slide = slides[step];
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 bg-gradient-to-br from-pink-100 via-purple-100 to-white">
-      
+    <main className="min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 bg-gradient-to-br from-pink-100 via-purple-100 to-white max-w-screen-sm mx-auto pb-10">
       {/* Indicator */}
       <div className="w-full flex justify-center space-x-2 mt-4">
         {slides.map((_, i) => (
           <div
             key={i}
             className={`h-2 rounded-full transition-all duration-300 ${i <= step ? 'bg-pink-500' : 'bg-pink-200'}`}
-            style={{ width: '60px' }} // ลดขนาดให้เหมาะกับจอมือถือ
+            style={{ width: '60px' }}
           />
         ))}
       </div>
@@ -84,7 +83,7 @@ export default function SurveyIntro() {
           ข้าม
         </button>
       </div>
-
     </main>
+
   );
 }
