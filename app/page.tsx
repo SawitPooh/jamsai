@@ -23,13 +23,14 @@ export default function HomePage() {
         {/* คำอธิบาย */}
         <p className="text-sm text-gray-700 mt-2">
         ปรึกษาสุขภาพใจไปกับ NONG JAMSAI<br />
-          เว็ปไซต์คัดกรองซึมเศร้าด้วยระบบ AI <br />
+          เว็บไซต์คัดกรองภาวะสุขภาพใจ <br />
+          และพื้นที่ให้คำปรึกษาด้วยระบบ AI <br />
           “เพื่อนที่พร้อมรับฟังทุกความรู้สึกของคุณ”
         </p>
 
         <p className="text-xs text-gray-600 mt-4">
-          คัดกรองภาวะซึมเศร้าผ่านการตอบแบบสอบถาม<br />
-          สามรถคุยกับ NONG JAMSAI ผ่านทางข้อความ
+          คัดกรองสุขภาพใจผ่านการตอบแบบสอบถาม<br />
+          สามารถคุยกับ NONG JAMSAI ผ่านทางข้อความ
         </p>
 
         {/* ปุ่มเริ่มทำแบบสอบถาม */}
@@ -37,7 +38,7 @@ export default function HomePage() {
           onClick={handleClick}
           className="mt-6 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full w-full"
         >
-          พร้อมตรวจสุขภาพใจแล้ว
+          พร้อมในการปรึกษาสุขภาพใจแล้ว
         </button>
       </div>
     </main>
