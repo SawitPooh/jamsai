@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 export default function SelectDoctorChatPage() {
-  const router = useRouter();
+
 
   const handleBookDoctor = () => {
     window.open(
