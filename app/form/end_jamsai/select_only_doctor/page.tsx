@@ -5,10 +5,6 @@ import { useRouter } from 'next/navigation';
 export default function SelectDoctorChatPage() {
   const router = useRouter();
 
-  const handleChatWithJamsai = () => {
-    router.push('/chat');
-  };
-
   const handleBookDoctor = () => {
     window.open(
       'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2CS04vzdMg8mpsIq6qqde4QqSMddsKSmkTarUaB4MkVxlOQzl8pniA5ZXwybkBtwFbegA5-aM2',
