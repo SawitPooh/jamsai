@@ -57,7 +57,7 @@ export default function EightQSummaryPage() {
         >
           <img src="/img/jamsai.svg" alt="แจ่มใส" className="w-10 h-10" />
           <span className="text-black font-semibold">น้องแจ่มใสจะพาพี่ ๆ ไปปรึกษาแพทย์ต่อไปนะคะ</span>
-          <span className="ml-auto font-bold">ถัดไป</span>
+         
         </button>
       </div>
     </main>
