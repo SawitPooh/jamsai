@@ -33,7 +33,11 @@ export default function EightQSummaryPage() {
   }
 
   const handleNext = () => {
-    router.push('/form/end_jamsai/select_doctor_chat'); // ไปต่อ
+    if (totalScore >= 17) {
+      router.push('/form/end_jamsai/select_only_doctor');
+    } else {
+       router.push('/form/end_jamsai/select_doctor_chat');
+    }
   };
 
   return (
@@ -53,7 +57,7 @@ export default function EightQSummaryPage() {
         >
           <img src="/img/jamsai.svg" alt="แจ่มใส" className="w-10 h-10" />
           <span className="text-black font-semibold">น้องแจ่มใสจะพาพี่ ๆ ไปปรึกษาแพทย์ต่อไปนะคะ</span>
-          <span className="ml-auto font-bold">ถัดไป</span>
+          
         </button>
       </div>
     </main>
